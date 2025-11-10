@@ -1,0 +1,198 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Theme design tokens (light) */
+:root {
+	--background: 0 0% 100%;
+	--foreground: 222 47% 11%;
+
+	--card: 0 0% 100%;
+	--card-foreground: 222 47% 11%;
+
+	--popover: 0 0% 100%;
+	--popover-foreground: 222 47% 11%;
+
+	--primary: 222 89% 55%; /* blue-ish */
+	--primary-foreground: 0 0% 100%;
+
+	--secondary: 240 5% 96%;
+	--secondary-foreground: 222 47% 11%;
+
+	--muted: 240 5% 96%;
+	--muted-foreground: 215 16% 47%;
+
+	--accent: 222 89% 55%;
+	--accent-foreground: 0 0% 100%;
+
+	--destructive: 0 84% 60%;
+	--destructive-foreground: 0 0% 100%;
+
+	--border: 214 32% 91%;
+	--input: 214 32% 91%;
+	--ring: 222 89% 55%;
+
+	--radius: 0.5rem;
+
+	/* Accessible chip tokens */
+	--chip-primary-bg: 217 100% 96%;
+	--chip-primary-border: 217 80% 78%;
+	--chip-primary-hover: 217 100% 92%;
+	--chip-primary-active: 217 95% 86%;
+	--chip-primary-text: 222 73% 34%;
+
+	--chip-secondary-bg: 270 100% 96%;
+	--chip-secondary-border: 270 76% 78%;
+	--chip-secondary-hover: 270 100% 92%;
+	--chip-secondary-active: 270 96% 86%;
+	--chip-secondary-text: 272 67% 34%;
+
+	--chip-neutral-bg: 215 33% 94%;
+	--chip-neutral-border: 215 20% 80%;
+	--chip-neutral-hover: 215 33% 88%;
+	--chip-neutral-active: 215 33% 82%;
+	--chip-neutral-text: 215 30% 32%;
+}
+
+/* Dark theme overrides */
+.dark {
+	--background: 222 47% 7%;
+	--foreground: 0 0% 98%;
+
+	--card: 222 47% 9%;
+	--card-foreground: 0 0% 98%;
+
+	--popover: 222 47% 9%;
+	--popover-foreground: 0 0% 98%;
+
+	--primary: 222 89% 63%;
+	--primary-foreground: 0 0% 100%;
+
+	--secondary: 217 33% 17%;
+	--secondary-foreground: 0 0% 98%;
+
+	--muted: 217 33% 17%;
+	--muted-foreground: 215 20% 65%;
+
+	--accent: 222 89% 63%;
+	--accent-foreground: 0 0% 100%;
+
+	--destructive: 0 63% 50%;
+	--destructive-foreground: 0 0% 98%;
+
+	--border: 217 33% 22%;
+	--input: 217 33% 22%;
+	--ring: 222 89% 63%;
+
+	--chip-primary-bg: 221 45% 20%;
+	--chip-primary-border: 221 55% 42%;
+	--chip-primary-hover: 221 45% 26%;
+	--chip-primary-active: 221 45% 32%;
+	--chip-primary-text: 215 80% 88%;
+
+	--chip-secondary-bg: 268 42% 24%;
+	--chip-secondary-border: 268 55% 48%;
+	--chip-secondary-hover: 268 42% 30%;
+	--chip-secondary-active: 268 42% 36%;
+	--chip-secondary-text: 270 100% 90%;
+
+	--chip-neutral-bg: 215 24% 20%;
+	--chip-neutral-border: 215 28% 40%;
+	--chip-neutral-hover: 215 24% 27%;
+	--chip-neutral-active: 215 24% 32%;
+	--chip-neutral-text: 210 24% 88%;
+}
+
+body { 
+	background-color: hsl(var(--background));
+	color: hsl(var(--foreground));
+	font-feature-settings: "rlig" 1, "calt" 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Utility for smooth theme transition */
+/* Limit theme transition to body to avoid whole-page flashing animations */
+body { transition: background-color 0.25s ease, color 0.25s ease; }
+
+/* Theme-aware text helpers */
+.theme-text-primary { color: hsl(var(--foreground)); }
+.theme-text-secondary { color: hsl(var(--muted-foreground)); }
+.theme-text-accent { color: hsl(var(--primary)); }
+
+/* Theme-aware surface helpers */
+.surface-card {
+	background-color: hsl(var(--card));
+	color: hsl(var(--card-foreground));
+}
+
+.surface-muted {
+	background-color: hsl(var(--muted));
+	color: hsl(var(--muted-foreground));
+}
+
+/* Accessible chip/tag styles */
+.chip {
+	--chip-bg-current: hsl(var(--chip-neutral-bg));
+	--chip-border-current: hsl(var(--chip-neutral-border));
+	--chip-hover-current: hsl(var(--chip-neutral-hover));
+	--chip-active-current: hsl(var(--chip-neutral-active));
+	--chip-text-current: hsl(var(--chip-neutral-text));
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.35rem;
+	padding-inline: 1rem;
+	padding-block: 0.45rem;
+	border-radius: 9999px;
+	font-weight: 600;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	background-color: var(--chip-bg-current);
+	color: var(--chip-text-current);
+	border: 1px solid var(--chip-border-current);
+	transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+	cursor: pointer;
+}
+
+.chip[data-variant="primary"] {
+	--chip-bg-current: hsl(var(--chip-primary-bg));
+	--chip-border-current: hsl(var(--chip-primary-border));
+	--chip-hover-current: hsl(var(--chip-primary-hover));
+	--chip-active-current: hsl(var(--chip-primary-active));
+	--chip-text-current: hsl(var(--chip-primary-text));
+}
+
+.chip[data-variant="secondary"] {
+	--chip-bg-current: hsl(var(--chip-secondary-bg));
+	--chip-border-current: hsl(var(--chip-secondary-border));
+	--chip-hover-current: hsl(var(--chip-secondary-hover));
+	--chip-active-current: hsl(var(--chip-secondary-active));
+	--chip-text-current: hsl(var(--chip-secondary-text));
+}
+
+.chip:hover {
+	background-color: var(--chip-hover-current);
+	border-color: var(--chip-border-current);
+}
+
+.chip:active {
+	background-color: var(--chip-active-current);
+	transform: translateY(1px);
+}
+
+.chip:focus-visible {
+	outline: 2px solid hsl(var(--ring));
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px hsl(var(--background));
+}
+
+.chip[data-icon="true"] svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body { transition: none; }
+	.chip { transition: none; }
+}
+
