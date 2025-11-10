@@ -1,9 +1,7 @@
 "use client";
 
 import { 
-  Mail,  
-  Facebook, 
-  Twitter, 
+  Mail,   
   Linkedin, 
   Instagram, 
   Youtube,
