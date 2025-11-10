@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider, ThemeScript } from "@/components/theme-provider";
-import ScrollToTop from '@/components/ScrollToTop';
+import ScrollToTop from "@/components/ScrollToTop";
 import { connectDB } from "@/lib/db";
 
-// Workaround for third-party bundle expecting a global variable during SSR
-if (typeof globalThis !== "undefined" && !(globalThis as any).packageName) {
-  (globalThis as any).packageName = "@clerk/clerk-react";
+type GlobalWithPackage = typeof globalThis & { packageName?: string };
+
+{
+  const g = globalThis as GlobalWithPackage;
+  if (typeof g !== "undefined" && !g.packageName) {
+    g.packageName = "@clerk/clerk-react";
+  }
 }
 
 const geistSans = Geist({
@@ -26,7 +30,7 @@ export const metadata: Metadata = {
   title: "SkillConnect",
   description: "A freelance marketplace powered by Clerk & MongoDB",
   icons: {
-    icon: '/favicon.ico',
+    icon: "/favicon.ico",
   },
 };
 
@@ -35,7 +39,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Ensure MongoDB is connected on server side
   void connectDB();
 
   return (
@@ -44,7 +47,9 @@ export default function RootLayout({
         <head>
           <ThemeScript />
         </head>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}>          
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}
+        >
           <ThemeProvider>
             {children}
             <ScrollToTop />
