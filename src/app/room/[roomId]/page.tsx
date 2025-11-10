@@ -21,7 +21,6 @@ export default function RoomPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
   const [loading, setLoading] = useState(true);
-  const [isConnected] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Auto scroll to bottom when new messages arrive

@@ -7,6 +7,11 @@ import { ThemeProvider, ThemeScript } from "@/components/theme-provider";
 import ScrollToTop from '@/components/ScrollToTop';
 import { connectDB } from "@/lib/db";
 
+// Workaround for third-party bundle expecting a global variable during SSR
+if (typeof globalThis !== "undefined" && !(globalThis as any).packageName) {
+  (globalThis as any).packageName = "@clerk/clerk-react";
+}
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

@@ -40,9 +40,8 @@ export default function AuthLayout({ children, title = "Welcome to" }: AuthLayou
                         <div className="mb-6 animate-slideInRight">
                             <h1 className="text-gray-400 text-sm font-medium mb-1">{title}</h1>
                             <h2 className="text-3xl font-bold">
-                                <span className="text-white">Free</span>
-                                <span className="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent bg-[length:200%_100%]">Lance</span>
-                                <span className="text-white">Base</span>
+                                <span className="text-white">Skill</span>
+                                <span className="bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent bg-[length:200%_100%]">Connect</span>
                             </h2>
                         </div>
 

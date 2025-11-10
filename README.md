@@ -55,7 +55,7 @@ Language composition: TypeScript (99.2%), Other (0.8%).
 ## 📂 Project Structure
 
 ```
-frelance-web/
+skillconnect/
 ├── src/
 │   ├── app/                    # Next.js App Router (pages & api)
 │   │   ├── api/                # API endpoints (auth, jobs, users, chat)
@@ -70,8 +70,8 @@ frelance-web/
 │   └── styles/                 # Global styles
 ├── public/                     # Static assets
 ├── package.json                # Dependencies & scripts
-├── tailwind.config.js          # Tailwind config
-├── next.config.js              # Next.js config
+├── tailwind.config.ts          # Tailwind config
+├── next.config.ts              # Next.js config
 └── tsconfig.json               # TypeScript config
 ```
 
@@ -124,10 +124,9 @@ Open http://localhost:3000
 ## 📜 Available Scripts
 
 ```bash
-bun dev              # Start development server with hot reload
-bun build            # Create production build
-bun start            # Start production server
-bun server/server.ts # Start websocket server
+bun dev    # Start development server with hot reload
+bun build  # Create production build
+bun start  # Start production server
 ```
 
 
