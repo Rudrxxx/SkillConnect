@@ -168,10 +168,6 @@ We welcome contributions! Please follow the standard Git workflow:
 Please follow code style, add tests, and update docs.
 
 
-## 🔒 Security
-
-Report vulnerabilities to SkillConnect01@gmail.com. Do not open public issues for security concerns.
-
 
 ## 📄 License
 
@@ -184,4 +180,4 @@ Thanks to Next.js, MongoDB, Tailwind CSS, and Bun.
 
 ---
 
-Made with ❤️ by Rudransh Gupta
+Made with ❤️ by [Rudransh Gupta](https://www.linkedin.com/in/rudransh-gupta-0a2570329/)
